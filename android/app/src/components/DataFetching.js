@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, Text, View,StyleSheet,Image } from 'react-native';
-import axios from 'axios';
+
 
 export default App = () => {
   const [isLoading, setLoading] = useState(true);
@@ -48,6 +48,7 @@ export default App = () => {
     const styles=StyleSheet.create({
         container:{
             backgroundColor:'white',
+            
             
           
           },

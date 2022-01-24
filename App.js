@@ -2,6 +2,7 @@ import React,{useEffect} from "react";
 import {View} from "react-native";
 import SplashScreen from 'react-native-splash-screen';
 import DataFetching from "./android/app/src/components/DataFetching";
+import Regform from "./android/app/src/components/Regform";
 
 
 
@@ -14,6 +15,7 @@ const App =()=>{
  
   return(
     <View>
+      <Regform />
       <DataFetching />
     </View>
     
