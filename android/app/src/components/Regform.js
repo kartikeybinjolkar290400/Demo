@@ -11,7 +11,7 @@ export default App = () => {
 
 
     return (
-        <View style={stlyes.regform}>
+        <View >
             <Text style={stlyes.header}>Registration Form</Text>
 
         </View>
