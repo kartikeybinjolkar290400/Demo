@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import {FlatList, Text, View, StyleSheet, Image, Button} from 'react-native';
+import {FlatList, Text, View, StyleSheet, Image, Button,TouchableOpacity} from 'react-native';
 import CardView from "react-native-cardview";
+import {useNavigation} from "@react-navigation/native";
+
 
 
 export default App = () => {
-     const [isLoading, setLoading] = useState(true);
+     const [ loading,setLoading] = useState(true);
      const [data, setData] = useState([]);
+     const navigation = useNavigation();
      console.log(data);
+
+
 
      useEffect(() => {
       fetch('https://fakestoreapi.com/products')
@@ -26,7 +31,7 @@ export default App = () => {
           numColumns={2}
           keyExtractor={(item) => item.id}
           data={data}
-          renderItem={({ item }) => (
+          renderItem={({ item,id,title }) => (
               <CardView
                   cardElevation={10}
                   cardMaxElevation={5}
@@ -41,10 +46,14 @@ export default App = () => {
           style={{width: 160, height: 175,marginStart:10,marginTop:10,padding:8,marginLeft:14}}
         />
 
-        <Text  numberOfLines={1} style={styles.title}>{item.title}</Text>
+
+        <TouchableOpacity onPress={ () => navigation.navigate('ProductListing',{id:item.id,title:item.title})}>
+            <Text  numberOfLines={1} style={styles.title}>{item.title}</Text>
+        </TouchableOpacity>
+
         <Text style={styles.price}>$ {item.price} {item.rate}</Text>
             <View style={styles.cart}>
-                <Button title='Add to cart' uppercase={false} />
+                <Button title='ADD TO CART'  />
             </View>
 
 
@@ -55,6 +64,7 @@ export default App = () => {
 
         </View>
       )}
+
 
 
 const styles=StyleSheet.create({
@@ -84,8 +94,8 @@ const styles=StyleSheet.create({
             fontSize:12,
             color:'black',
             maxWidth:200,
-            marginTop:5,
-            marginStart:3,padding:6
+            marginTop:10,
+            marginStart:3,padding:4
 
         },
         cardView :{
@@ -106,7 +116,7 @@ const styles=StyleSheet.create({
             borderTopLeftRadius:30,
             borderBottomLeftRadius:30,
             overflow:"hidden",
-            top:249,
+            top:250,
             right:0,
     }
 
