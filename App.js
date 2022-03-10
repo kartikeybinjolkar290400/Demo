@@ -43,7 +43,7 @@ const App =()=> {
                     ),
                 }}
                 />
-                <Tab.Screen name="ProductListing" component={ProductDetailScreen} options={{tabBarIcon: ({ color,size }) =>(
+                <Tab.Screen name="Product Details" component={ProductDetailScreen} options={{tabBarIcon: ({ color,size }) =>(
                         <MaterialCommunityIcons  name='heart'  color={'#2196F3'}  size={33} />
                     ),}}/>
                 <Tab.Screen name="Account" component={AccountScreen} options={{tabBarIcon: ({ color,size }) =>(

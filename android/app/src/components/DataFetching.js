@@ -31,7 +31,7 @@ export default App = () => {
           numColumns={2}
           keyExtractor={(item) => item.id}
           data={data}
-          renderItem={({ item,id,title }) => (
+          renderItem={({ item}) => (
               <CardView
                   cardElevation={10}
                   cardMaxElevation={5}
@@ -43,18 +43,19 @@ export default App = () => {
           source={{
             uri: item.image,
           }}
-          style={{width: 160, height: 175,marginStart:10,marginTop:10,padding:8,marginLeft:14}}
+          resizeMode="stretch"
+          style={{width: 160, height: 175,marginStart:7,marginTop:10,padding:8,marginLeft:14}}
         />
 
 
-        <TouchableOpacity onPress={ () => navigation.navigate('ProductListing',{id:item.id,title:item.title})}>
+        <TouchableOpacity onPress={ () => navigation.navigate('Product Details',{title:item.title,price:item.price,image:item.image,description:item.description})}>
             <Text  numberOfLines={1} style={styles.title}>{item.title}</Text>
         </TouchableOpacity>
 
-        <Text style={styles.price}>$ {item.price} {item.rate}</Text>
-            <View style={styles.cart}>
-                <Button title='ADD TO CART'  />
-            </View>
+        <Text style={styles.price}>$ {item.price} </Text>
+            <TouchableOpacity style={styles.cart}>
+                <Text style={{fontWeight:'500',color:'white'}}>Add to Cart</Text>
+            </TouchableOpacity>
 
 
         </CardView>
@@ -111,8 +112,11 @@ const styles=StyleSheet.create({
         },
         cart: {
             position:"absolute",
-            bottom:10,
-            paddingLeft:0,
+            bottom:15,
+            padding:3,
+            paddingLeft:20,
+            paddingRight:20,
+            backgroundColor:'#2196F3',
             borderTopLeftRadius:30,
             borderBottomLeftRadius:30,
             overflow:"hidden",
